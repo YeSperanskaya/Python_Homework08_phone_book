@@ -10,16 +10,23 @@ import json
 
 # просмотр
 def read_file():
-    f = open('phone_book.json', 'r')
+    f = open('phone_book.json')
     f.read()
 
 
 
 # сохранение
-def save():
+def save_in_file():
     with open('phone_book.json', 'w') as file:
         json.dump(phone_book, file)
         print("")
+
+
+def save():
+    name = input("Введите имя: ")
+    num = input("Введите номер: ")
+    phone_book[name] = num
+    save_in_file()
 # импорт
 
 # поиск
@@ -37,13 +44,12 @@ phone_book = dict()
 with open('phone_book.json', 'w') as file:
     json.dump(phone_book, file)
 
-print(read_file())
-save_file()
-print(read_file())
+
+
 
 
 #есть словарь в него что-то добавляется, добавить что-то в слвоарь, 
-phone_book = dict()
+
 
 
 #убрать из него что-то а потом пнуть это в отдельный файл
@@ -60,4 +66,11 @@ while True:
     print("1 - просмотр, 2 - сохранить новый контакт, 3 - изменить контакт")
     print("4 - удалить контакт")
     command = input("Введите команду: ")
-    if (command == 1):
+    if (command == "/2"):
+        save()
+        print("Контакт добавлен")
+    elif (command == "/1"):
+        read_file()
+        print("и чего?")
+
+
