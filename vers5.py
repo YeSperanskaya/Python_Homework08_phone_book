@@ -16,25 +16,33 @@ def write_file(dict):
 
 # Блок работы со словарем
 # Ищем существующий контакт
-def find_contact(name):
+def find_contact():
+    name = input('Введите имя контакта: ')
     data = read_file()
     if len(data) == 0:
         print("В телефонной книге нет контактов")
     else:
         if name in data:
             value = data[name]
-            print(f'У абонента {name} номер телефона {value}')
+            print(f'У абонента "{name}" номер телефона: {value}')
         else:
-            print(f'Контакт {name} в телефонном справочнике отсутствует')
+            print(f'Контакт "{name}" в телефонном справочнике отсутствует')
 
-def find():
-    contact = input('Введите имя контакта: ')
-    find_contact(contact)
+#Сохраняем новый контакт
+def save_contact():
+    data = read_file()
+    name = input("Введите имя контакта: ")
+    number = input("Введите номер телефона без пробелов: ")
+    data[name] = number
+    print('Контакт добавлен!')
+    write_file(data)
+
+# Изменить контакт
+#def change_contact():
+    
 
 
-
+save_contact()
 print(read_file())
-data = {}
-write_file(data)
-print(read_file())
-find()
+
+
