@@ -38,11 +38,34 @@ def save_contact():
     write_file(data)
 
 # Изменить контакт
-#def change_contact():
-    
+def change_contact():
+    data = read_file()
+    name = input("Введите имя контакта, которое хотите изменить: ")
+    if name in data:
+        new_name = input("Введите новое имя контакта: ")
+        new_number = input("Введите новый номер контакта: ")
+        # тут будет ссылка на функцию удаления
+        del data[name]
+        data[new_name] = new_number
+        print('Контакт изменен!')
+        write_file(data)
+    else:
+        print('Такого контакта нет, но вы можете его создать используя функцию "сохранить".')
 
+# Удалить контакт    
+def delete_contact():
+    data = read_file()
+    name = input("Введите имя контакта, которое хотите удалить: ")
+    if name in data:
+        del data[name]
+        print('Контакт удалён!')
+        write_file(data)
 
 save_contact()
+#print(read_file())
+#change_contact()
+print(read_file())
+delete_contact()
 print(read_file())
 
 
